@@ -17,7 +17,16 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
-              
+
+      - name: Install Docker and Docker Compose
+        run: |
+          sudo apt update
+          sudo apt install docker.io docker-compose -y
+
+      - name: Check docker-compose version
+        run: |
+          docker-compose --version
+
       - name: Deploy Docker Compose
         run: |
           ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} 'cd ~/docker-compose-react-nodejs-mysql-master && sudo docker-compose up -d --build'
