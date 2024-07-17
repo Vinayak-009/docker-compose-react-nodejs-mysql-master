@@ -26,7 +26,7 @@ jobs:
             exit 1
           fi
           EOF
-        fail-fast: true  # Fail workflow if check fails
+
 
       - name: Deploy Docker Compose
         run: |
