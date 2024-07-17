@@ -17,7 +17,7 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
-
+              
       - name: Check docker-compose installation
         run: |
           ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} << 'EOF'
@@ -26,6 +26,9 @@ jobs:
             exit 1
           fi
           EOF
+
+
+
 
 
       - name: Deploy Docker Compose
